@@ -3654,6 +3654,62 @@ _decode_lte_phy_subpkt(const char *b, int offset, size_t length,
                                                                  "Projected SIR", SIR);
                                 Py_DECREF(old_object);
 
+                                utemp = _search_result_uint(result_subpkt,
+                                                            "CINR Rx[0]");
+                                float CINR0 = 0;
+                                if (utemp & (1 << 31)) {
+                                    CINR0 = utemp - 4294967296;
+                                } else {
+                                    CINR0 = utemp;
+                                }
+                                pyfloat = Py_BuildValue("f", CINR0);
+                                old_object = _replace_result(result_subpkt,
+                                                             "CINR Rx[0]", pyfloat);
+                                Py_DECREF(old_object);
+                                Py_DECREF(pyfloat);
+
+                                utemp = _search_result_uint(result_subpkt,
+                                                            "CINR Rx[1]");
+                                float CINR1 = 0;
+                                if (utemp & (1 << 31)) {
+                                    CINR1 = utemp - 4294967296;
+                                } else {
+                                    CINR1 = utemp;
+                                }
+                                pyfloat = Py_BuildValue("f", CINR1);
+                                old_object = _replace_result(result_subpkt,
+                                                             "CINR Rx[1]", pyfloat);
+                                Py_DECREF(old_object);
+                                Py_DECREF(pyfloat);
+
+                                utemp = _search_result_uint(result_subpkt,
+                                                            "CINR Rx[2]");
+                                float CINR2 = 0;
+                                if (utemp & (1 << 31)) {
+                                    CINR2 = utemp - 4294967296;
+                                } else {
+                                    CINR2 = utemp;
+                                }
+                                pyfloat = Py_BuildValue("f", CINR2);
+                                old_object = _replace_result(result_subpkt,
+                                                             "CINR Rx[2]", pyfloat);
+                                Py_DECREF(old_object);
+                                Py_DECREF(pyfloat);
+
+                                utemp = _search_result_uint(result_subpkt,
+                                                            "CINR Rx[3]");
+                                float CINR3 = 0;
+                                if (utemp & (1 << 31)) {
+                                    CINR3 = utemp - 4294967296;
+                                } else {
+                                    CINR3 = utemp;
+                                }
+                                pyfloat = Py_BuildValue("f", CINR3);
+                                old_object = _replace_result(result_subpkt,
+                                                             "CINR Rx[3]", pyfloat);
+                                Py_DECREF(old_object);
+                                Py_DECREF(pyfloat);
+
                                 success = true;
                                 break;
                             }
